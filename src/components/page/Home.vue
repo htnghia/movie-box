@@ -19,15 +19,19 @@
 </template>
 
 <script>
-  import Header from '../app/Header';
-  import Slider from '../widgets/Slider';
-  import Tab from '../widgets/Tab';
+import Header from "../app/Header";
+import Slider from "../widgets/Slider";
+import Tab from "../widgets/Tab";
 
-  export default {
-    name: 'HelloWorld',
-    components: {Tab, Slider, Header},
-    props: {
-      msg: String
-    }
-  };
+export default {
+  name: "HelloWorld",
+  components: {
+    Tab,
+    Slider,
+    Header
+  },
+  props: {
+    msg: String
+  }
+};
 </script>
