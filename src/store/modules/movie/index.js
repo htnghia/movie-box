@@ -1,6 +1,7 @@
 import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
+import constants from "../../../utils/constants";
 
 export default {
   namespaced: true,
@@ -8,15 +9,15 @@ export default {
   getters,
   mutations,
   state: {
-    popular: {
+    [constants.MOVIE_FILTER.POPULAR]: {
       lastestPage: 0,
       data: []
     },
-    topRated: {
+    [constants.MOVIE_FILTER.TOP_RATED]: {
       lastestPage: 0,
       data: []
     },
-    upcoming: {
+    [constants.MOVIE_FILTER.UPCOMING]: {
       lastestPage: 0,
       data: []
     }

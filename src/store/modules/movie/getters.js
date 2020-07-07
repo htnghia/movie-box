@@ -1,8 +1,9 @@
-import constants from "./constants";
-const getPopular = state => {
-  return state.popular;
+import moduleConstants from "./constants";
+
+const getPopular = (state) => {
+  return state["UPCOMING"];
 };
 
 export default {
-  [constants.GET_POPULAR]: getPopular
+  [moduleConstants.GET_POPULAR]: getPopular
 };
