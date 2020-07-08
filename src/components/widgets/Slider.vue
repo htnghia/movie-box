@@ -27,7 +27,7 @@
           >
             <div>
               <b-nav align="left pl-0" class="tags">
-                <b-nav-item disabled v-for="(genre, index) in getMovieGenres(movie.genre_ids)" v-bind:key="index">{{genre.name}}</b-nav-item>
+                <b-nav-item v-for="(genre, index) in getMovieGenres(movie.genre_ids)" v-bind:key="index">{{genre.name}}</b-nav-item>
               </b-nav>
             </div>
             <div>
@@ -51,7 +51,7 @@
               font-scale="1.5"
               style="color: deeppink;"
             ></b-icon>
-            <b-badge variant="dark" class="ml-2">{{getBase5Vote(movie.vote_average).toFixed(1)}}</b-badge>
+            <b-badge variant="dark" class="ml-2">{{getBase5Vote(movie.vote_average)}}</b-badge>
           </div>
         </div>
       </b-carousel-slide>
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     getBase5Vote(voteAverage) {
-      return voteAverage / 2;
+      return voteAverage ? Math.round(voteAverage / 2 * 10) / 10 : "";
     },
     getStarIcon(index, voteAverage) {
       const base5Vote = this.getBase5Vote(voteAverage);
@@ -95,7 +95,7 @@ export default {
       } else if (index > base5Vote && index - 1 < base5Vote) {
         return "star-half";
       } else {
-        return "star-fill";
+        return "star";
       }
     }
   }

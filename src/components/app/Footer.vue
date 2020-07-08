@@ -15,7 +15,7 @@
     <div class="mb-5 pb-5 d-flex justify-content-between">
       <p>Designed by Milan Houter. All rights reserved</p>
       <div>
-        <b-icon icon="camera" font-scale="1.5" class="mr-2"></b-icon>
+        <i font-scale="1.5" class="mr-2 icon-loading"></i>
         <b-icon icon="camera" font-scale="1.5" class="mr-2"></b-icon>
         <b-icon icon="camera" font-scale="1.5" class="mr-2"></b-icon>
         <b-icon icon="camera" font-scale="1.5" class="mr-2"></b-icon>

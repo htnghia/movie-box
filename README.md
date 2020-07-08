@@ -1,4 +1,4 @@
-# move-box
+# Movie Box
 
 ## Project setup
 ```

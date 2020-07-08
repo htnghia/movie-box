@@ -9,18 +9,22 @@
         :active="tab.filter === activeFilter"
       >
         <b-card-group columns>
-          <Card
+          <MovieCard
             class="mb-3"
             v-for="(item, index) in movies"
             v-bind:key="index"
             :title="item.title"
             :genres="getMovieGenres(item.genre_ids)"
             :img-src="baseImageUrlW185 + item.poster_path"
-          ></Card>
+          ></MovieCard>
         </b-card-group>
         <infinite-loading @infinite="infiniteHandler">
-          <div slot="spinner">
-            <img src="@/assets/loading-icon.png" />
+          <div slot="spinner" class="flex-column">
+            <i icon="@/assets/loading-icon.png" />
+            Loading...
+          </div>
+          <div slot="no-results" class="flex-column">
+            <i class="icon-loading" />
             Loading...
           </div>
         </infinite-loading>
@@ -31,7 +35,7 @@
 
 <script>
 import InfiniteLoading from "vue-infinite-loading";
-import Card from "./Card";
+import MovieCard from "./MovieCard";
 import movieConstants from "@/store/modules/movie/constants";
 import storeConstants from "@/store/constants";
 import constants from "@/utils/constants";
@@ -39,7 +43,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "MovieGridView",
-  components: { Card, InfiniteLoading },
+  components: { MovieCard, InfiniteLoading },
   data() {
     return {
       baseImageUrlW185: process.env.VUE_APP_MOVIE_BASE_IMAGE_URL_W185,
@@ -76,9 +80,9 @@ export default {
         filter: this.activeFilter
       });
       if (result && result.length) {
-        if (this.latestPage >= 1) {
-          return $state.complete();
-        }
+        // if (this.latestPage >= 1) {
+        //   return $state.complete();
+        // }
         $state.loaded();
       } else {
         $state.complete();
