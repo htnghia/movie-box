@@ -1,12 +1,17 @@
-import constants from './constants';
+import moduleConstants from './constants';
 
-const setPopular = (state, { page, results }, filter = "UPCOMING") => {
-  if (page > state[filter].lastestPage) {
+const setMovies = (state, { page, results, filter }) => {
+  if (state[filter] && page > state[filter].latestPage) {
     state[filter].data.push(...results);
-    state[filter].lastestPage = page;
+    state[filter].latestPage = page;
   }
 };
 
+const setGenres = (state, genres) => {
+  state.genres = genres;
+};
+
 export default {
-  [constants.MUTATION_POPULAR]: setPopular
+  [moduleConstants.MUTATION_GENRES]: setGenres,
+  [moduleConstants.MUTATION_MOVIES]: setMovies
 };

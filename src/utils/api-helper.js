@@ -1,7 +1,6 @@
 const requestOptions = (method, body) => {
   const params = body && body.params ? body.params : {};
-  // TODO api key configurable
-  params.api_key = "e00dcf60f87aa23610b6fa44aeba99ce";
+  params.api_key = process.env.VUE_APP_MOVIE_API_KEY;
   return {
     method,
     data: body,
@@ -10,13 +9,13 @@ const requestOptions = (method, body) => {
 };
 
 const apiServer = () => {
-  // TODO end point configurable
-  return "https://api.themoviedb.org/3";
+  return process.env.VUE_APP_MOVIE_ENDPOINT;
 };
 
 const endpoint = () => {
   return {
     movie: {
+      genres: apiServer() + "/genre/movie/list",
       popular: apiServer() + "/movie/popular",
       topRated: apiServer() + "/movie/top_rated",
       upcoming: apiServer() + "/movie/upcoming"

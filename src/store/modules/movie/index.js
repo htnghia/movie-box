@@ -10,16 +10,17 @@ export default {
   mutations,
   state: {
     [constants.MOVIE_FILTER.POPULAR]: {
-      lastestPage: 0,
+      latestPage: 0,
       data: []
     },
     [constants.MOVIE_FILTER.TOP_RATED]: {
-      lastestPage: 0,
+      latestPage: 0,
       data: []
     },
     [constants.MOVIE_FILTER.UPCOMING]: {
-      lastestPage: 0,
+      latestPage: 0,
       data: []
-    }
+    },
+    genres: []
   }
 };

@@ -1,9 +1,18 @@
 import moduleConstants from "./constants";
+import filter from "lodash/filter";
 
-const getPopular = (state) => {
-  return state["UPCOMING"];
+const getMovies = state => filter => {
+  return state[filter] ? state[filter] : {};
 };
 
+const getGenreByIds = state => (ids) => {
+  return ids.length ? filter(state.genres, genre => ids.includes(genre.id)) : [];
+};
+
+const getGenres = state => state.genres;
+
 export default {
-  [moduleConstants.GET_POPULAR]: getPopular
+  [moduleConstants.GET_GENRE]: getGenres,
+  [moduleConstants.GET_GENRE_BY_IDS]: getGenreByIds,
+  [moduleConstants.GET_MOVIES]: getMovies
 };

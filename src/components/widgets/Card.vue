@@ -11,6 +11,9 @@
       <b-card-text>
         {{title}}
       </b-card-text>
+      <b-card-text>
+        {{genreNames.join(", ")}}
+      </b-card-text>
 
       <b-button href="#" variant="primary">Go somewhere</b-button>
     </b-card>
@@ -25,6 +28,10 @@ export default {
       type: String,
       default: ""
     },
+    genres: {
+      type: Array,
+      default: () => []
+    },
     imgSrc: {
       type: String,
       default: ""
@@ -32,6 +39,11 @@ export default {
     year: {
       type: Number,
       default: null
+    }
+  },
+  computed: {
+    genreNames() {
+      return this.genres.map(item => item.name);
     }
   }
 };
