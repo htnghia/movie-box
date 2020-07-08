@@ -10,25 +10,24 @@
       img-width="1024"
       img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
+      class="main-slider"
     >
-      <!-- Text slides with image -->
       <b-carousel-slide
-        v-for="(film, index) in films"
+        v-for="(movie, index) in top3Movies"
         v-bind:key="index"
-        :img-src="film.url"
+        :img-src="baseImageUrlW780 + movie.backdrop_path"
       >
         <div class="d-flex align-content-end flex-wrap justify-content-between">
           <b-jumbotron
             bg-variant="transparent"
-            :header="film.title"
+            :header="movie.title"
+            header-tag="h3"
             class="p-0 mb-0"
+            header-level="4"
           >
             <div>
-              <b-nav align="center">
-                <b-nav-item disabled>Active</b-nav-item>
-                <b-nav-item disabled>Link</b-nav-item>
-                <b-nav-item disabled>Another Link</b-nav-item>
-                <b-nav-item disabled>Disabled</b-nav-item>
+              <b-nav align="left pl-0" class="tags">
+                <b-nav-item disabled v-for="(genre, index) in getMovieGenres(movie.genre_ids)" v-bind:key="index">{{genre.name}}</b-nav-item>
               </b-nav>
             </div>
             <div>
@@ -46,31 +45,13 @@
           <div class="border border-light align-content-end mt-auto mb-1 p-2">
             <div>Rating <span>based on 3.546 reviews</span></div>
             <b-icon
-              icon="star-fill"
+              v-for="index in 5"
+              :key="index"
+              :icon="getStarIcon(index, movie.vote_average)"
               font-scale="1.5"
               style="color: deeppink;"
             ></b-icon>
-            <b-icon
-              icon="star-fill"
-              font-scale="1.5"
-              style="color: deeppink;"
-            ></b-icon>
-            <b-icon
-              icon="star-fill"
-              font-scale="1.5"
-              style="color: deeppink;"
-            ></b-icon>
-            <b-icon
-              icon="star-half"
-              font-scale="1.5"
-              style="color: deeppink;"
-            ></b-icon>
-            <b-icon
-              icon="star"
-              font-scale="1.5"
-              style="color: deeppink;"
-            ></b-icon>
-            <b-badge variant="dark">3.4</b-badge>
+            <b-badge variant="dark">{{getBase5Vote(movie.vote_average).toFixed(1)}}</b-badge>
           </div>
         </div>
       </b-carousel-slide>
@@ -79,37 +60,44 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import storeConstants from "@/store/constants";
+import movieConstants from "@/store/modules/movie/constants";
+import constants from "@/utils/constants";
+import slice from "lodash/slice";
+
 export default {
   name: "Slider",
   data() {
     return {
-      films: [
-        {
-          title: "Film1",
-          tags: ["tag1", "tag2", "tag3"],
-          duration: "1h:52m",
-          rating: {
-            score: 4,
-            totalReview: 3444
-          },
-          url:
-            "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/p/h/phi-vu-bao-to_980wx448h_1.jpg"
-        },
-        {
-          title: "Film1",
-          tags: ["tag1", "tag2", "tag3"],
-          duration: "1h:52m",
-          rating: {
-            score: 4,
-            totalReview: 3444
-          },
-          url:
-            "https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/p/h/phi-vu-bao-to_980wx448h_1.jpg"
-        }
-      ],
+      baseImageUrlW780: process.env.VUE_APP_MOVIE_BASE_IMAGE_URL_W780,
       slide: 0,
       sliding: null
     };
+  },
+  computed: {
+    ...mapGetters(storeConstants.MOVIE, {
+      moviesData: movieConstants.GET_MOVIES,
+      getMovieGenres: movieConstants.GET_GENRE_BY_IDS
+    }),
+    top3Movies() {
+      return slice(this.moviesData(constants.MOVIE_FILTER.POPULAR).data, 0, 3);
+    }
+  },
+  methods: {
+    getBase5Vote(voteAverage) {
+      return voteAverage / 2;
+    },
+    getStarIcon(index, voteAverage) {
+      const base5Vote = this.getBase5Vote(voteAverage);
+      if (index < base5Vote) {
+        return "star-fill";
+      } else if (index > base5Vote && index - 1 < base5Vote) {
+        return "star-half";
+      } else {
+        return "star-fill";
+      }
+    }
   }
 };
 </script>

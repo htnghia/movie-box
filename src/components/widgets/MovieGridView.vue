@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="mt-3 movie-grid">
     <b-tabs content-class="mt-3">
       <b-tab
         v-for="(tab, index) in moviesTabs"
         v-bind:key="index"
-        :title="tab.filter"
+        :title="tab.title"
         @click="clickTab(tab)"
         :active="tab.filter === activeFilter"
       >
