@@ -22,18 +22,28 @@
         </div>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col>
+        <Footer></Footer>
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 import Header from "../app/Header";
 import Slider from "../widgets/Slider";
-import Tab from "../widgets/Tab";
+import MovieGridView from "../widgets/MovieGridView";
+import Footer from '../app/Footer';
+import movieConstants from "@/store/modules/movie/constants";
+import storeConstants from "@/store/constants";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Home",
   components: {
-    Tab,
+    Footer,
+    MovieGridView,
     Slider,
     Header
   },

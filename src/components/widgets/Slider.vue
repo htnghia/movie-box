@@ -3,7 +3,7 @@
     <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="4000"
+      :interval="300000"
       controls
       indicators
       background="#ababab"
@@ -17,38 +17,62 @@
         v-bind:key="index"
         :img-src="film.url"
       >
-        <b-jumbotron bg-variant="transparent" :header="film.title">
-<!--          <b-badge href="#" variant="light" v-for="(tag, index) in film.tags" v-bind:key="index">{{-->
-<!--            tag-->
-<!--            }}</b-badge>-->
-<!--          <b-badge> {{ film.duration }}</b-badge>-->
-          <div>
-            <b-nav align="center">
-              <b-nav-item disabled>Active</b-nav-item>
-              <b-nav-item disabled>Link</b-nav-item>
-              <b-nav-item disabled>Another Link</b-nav-item>
-              <b-nav-item disabled>Disabled</b-nav-item>
-            </b-nav>
+        <div class="d-flex align-content-end flex-wrap justify-content-between">
+          <b-jumbotron
+            bg-variant="transparent"
+            :header="film.title"
+            class="p-0 mb-0"
+          >
+            <div>
+              <b-nav align="center">
+                <b-nav-item disabled>Active</b-nav-item>
+                <b-nav-item disabled>Link</b-nav-item>
+                <b-nav-item disabled>Another Link</b-nav-item>
+                <b-nav-item disabled>Disabled</b-nav-item>
+              </b-nav>
+            </div>
+            <div>
+              <b-button style="background-color: deeppink;" class="mr-2"
+                >WATCH MOVIE</b-button
+              >
+              <b-button variant="outline-light" class="mr-2"
+                >VIEW INFO</b-button
+              >
+              <b-button variant="outline-*" class="text-light"
+                >+ ADD TO WISHLIST</b-button
+              >
+            </div>
+          </b-jumbotron>
+          <div class="border border-light align-content-end mt-auto mb-1 p-2">
+            <div>Rating <span>based on 3.546 reviews</span></div>
+            <b-icon
+              icon="star-fill"
+              font-scale="1.5"
+              style="color: deeppink;"
+            ></b-icon>
+            <b-icon
+              icon="star-fill"
+              font-scale="1.5"
+              style="color: deeppink;"
+            ></b-icon>
+            <b-icon
+              icon="star-fill"
+              font-scale="1.5"
+              style="color: deeppink;"
+            ></b-icon>
+            <b-icon
+              icon="star-half"
+              font-scale="1.5"
+              style="color: deeppink;"
+            ></b-icon>
+            <b-icon
+              icon="star"
+              font-scale="1.5"
+              style="color: deeppink;"
+            ></b-icon>
+            <b-badge variant="dark">3.4</b-badge>
           </div>
-          <div>
-            <b-button style="background-color: deeppink;" size="lg">WATCH MOVIE</b-button>
-            <b-button variant="outline-light" size="lg">VIEW INFO</b-button>
-          </div>
-        </b-jumbotron>
-
-        <div>
-          <div>Rating <span>based on 3.546 reviews</span></div>
-          <b-icon icon="star-fill" font-scale="2" style="color: deeppink;"></b-icon>
-          <b-icon icon="star-fill" font-scale="2" style="color: deeppink;"></b-icon>
-          <b-icon icon="star-fill" font-scale="2" style="color: deeppink;"></b-icon>
-          <b-icon icon="star-half" font-scale="2" style="color: deeppink;"></b-icon>
-          <b-icon icon="star" font-scale="2" style="color: deeppink;"></b-icon>
-          <b-badge variant="dark">3.4</b-badge>
         </div>
-
-
-
-
       </b-carousel-slide>
     </b-carousel>
   </div>
