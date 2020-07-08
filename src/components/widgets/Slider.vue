@@ -3,7 +3,7 @@
     <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="300000"
+      :interval="10000"
       controls
       indicators
       background="#ababab"
@@ -51,7 +51,7 @@
               font-scale="1.5"
               style="color: deeppink;"
             ></b-icon>
-            <b-badge variant="dark">{{getBase5Vote(movie.vote_average).toFixed(1)}}</b-badge>
+            <b-badge variant="dark" class="ml-2">{{getBase5Vote(movie.vote_average).toFixed(1)}}</b-badge>
           </div>
         </div>
       </b-carousel-slide>

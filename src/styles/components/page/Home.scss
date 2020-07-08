@@ -6,7 +6,6 @@
 .navbar-header{
   position: absolute;
   z-index: 2;
-  width: 100%;
   h1{
     font-size: 2rem;
   }
@@ -33,4 +32,14 @@
     color: deeppink;
     border-color: transparent transparent deeppink transparent;
   }
+  .badge {
+    margin-top: -7px;
+  }
+}
+
+.cut-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 1.2em;
+  white-space: nowrap;
 }
