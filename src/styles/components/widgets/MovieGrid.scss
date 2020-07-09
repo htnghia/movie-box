@@ -1,0 +1,23 @@
+.movie-grid{
+  .nav a {
+    color: gray;
+    font-weight: bold;
+  }
+  .nav .active{
+    color: deeppink;
+    border-color: transparent transparent deeppink transparent;
+  }
+  .badge {
+    margin-top: -7px;
+  }
+}
+
+.card-deck .card {
+  max-width: 25%;
+}
+
+.category-dropdown {
+  position: absolute;
+  top: 10px;
+  left: 333px;
+}

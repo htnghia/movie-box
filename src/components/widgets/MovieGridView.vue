@@ -20,15 +20,18 @@
         </b-card-group>
         <infinite-loading @infinite="infiniteHandler">
           <div slot="spinner" class="flex-column">
-            <i icon="@/assets/loading-icon.png" />
-            Loading...
-          </div>
-          <div slot="no-results" class="flex-column">
-            <i class="icon-loading" />
+            <img src="@/assets/loading-icon.png" class="loading-icon" />
             Loading...
           </div>
         </infinite-loading>
       </b-tab>
+      <template v-slot:tabs-end>
+        <b-dropdown text="Genres" class="m-0" variant="outline-dark border-0" no-flip="true">
+          <b-dropdown-item v-for="genre in genres" v-bind:key="genre.id">{{
+            genre.name
+          }}</b-dropdown-item>
+        </b-dropdown>
+      </template>
     </b-tabs>
   </div>
 </template>
@@ -55,8 +58,12 @@ export default {
       ]
     };
   },
+  mounted: {
+    fetchGenres: movieConstants.ACTION_GET_GENRES
+  },
   computed: {
     ...mapGetters(storeConstants.MOVIE, {
+      genres: movieConstants.GET_GENRES,
       moviesData: movieConstants.GET_MOVIES,
       getMovieGenres: movieConstants.GET_GENRE_BY_IDS
     }),
@@ -69,6 +76,7 @@ export default {
   },
   methods: {
     ...mapActions(storeConstants.MOVIE, {
+      fetchGenres: movieConstants.ACTION_GET_GENRES,
       fetchPopular: movieConstants.ACTION_GET_MOVIES
     }),
     clickTab({ filter }) {
@@ -80,9 +88,9 @@ export default {
         filter: this.activeFilter
       });
       if (result && result.length) {
-        // if (this.latestPage >= 1) {
-        //   return $state.complete();
-        // }
+        if (this.latestPage >= 1) {
+          return $state.complete();
+        }
         $state.loaded();
       } else {
         $state.complete();

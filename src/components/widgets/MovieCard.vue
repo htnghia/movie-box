@@ -3,9 +3,8 @@
     <b-card
       :img-src="imgSrc"
       img-alt="Image"
-      size="sm"
       img-top
-      style="max-width: 20rem;"
+      img-height="500 rem"
       class="mb-2"
     >
       <b-card-title class="cut-text mw-100">{{title}}</b-card-title>

@@ -12,7 +12,7 @@ const getGenreByIds = state => (ids) => {
 const getGenres = state => state.genres;
 
 export default {
-  [moduleConstants.GET_GENRE]: getGenres,
+  [moduleConstants.GET_GENRES]: getGenres,
   [moduleConstants.GET_GENRE_BY_IDS]: getGenreByIds,
   [moduleConstants.GET_MOVIES]: getMovies
 };
