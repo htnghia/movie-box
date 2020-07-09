@@ -1,5 +1,15 @@
 # Movie Box
 
+## Third parties
+
+Vue CLI 3
+
+Bootstrap 4
+
+vue-infinite-loading
+
+lodash
+
 ## Project setup
 ```
 npm install
