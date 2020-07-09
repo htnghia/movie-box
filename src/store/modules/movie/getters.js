@@ -1,12 +1,16 @@
 import moduleConstants from "./constants";
 import filter from "lodash/filter";
 
-const getMovies = state => filter => {
-  return state[filter] ? state[filter] : {};
+const getMovies = state => {
+  return filter => {
+    return state[filter] ? state[filter] : {};
+  };
 };
 
-const getGenreByIds = state => (ids) => {
-  return ids.length ? filter(state.genres, genre => ids.includes(genre.id)) : [];
+const getGenreByIds = state => ids => {
+  return ids.length
+    ? filter(state.genres, genre => ids.includes(genre.id))
+    : [];
 };
 
 const getGenres = state => state.genres;

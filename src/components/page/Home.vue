@@ -27,7 +27,7 @@
 import Header from "../app/Header";
 import Slider from "../widgets/Slider";
 import MovieGridView from "../widgets/MovieGridView";
-import Footer from '../app/Footer';
+import Footer from "../app/Footer";
 import movieConstants from "@/store/modules/movie/constants";
 import storeConstants from "@/store/constants";
 import { mapActions } from "vuex";

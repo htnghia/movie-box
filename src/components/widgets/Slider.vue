@@ -3,12 +3,10 @@
     <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="10000"
+      :interval="5000"
       controls
       indicators
       background="#ababab"
-      img-width="1024"
-      img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
       class="main-slider"
     >
@@ -27,12 +25,16 @@
           >
             <div>
               <b-nav align="left pl-0" class="tags">
-                <b-nav-item v-for="(genre, index) in getMovieGenres(movie.genre_ids)" v-bind:key="index">{{genre.name}}</b-nav-item>
+                <b-nav-item
+                  v-for="(genre, index) in getMovieGenres(movie.genre_ids)"
+                  v-bind:key="index"
+                  >{{ genre.name }}</b-nav-item
+                >
               </b-nav>
             </div>
             <div>
               <b-button style="background-color: deeppink;" class="mr-2"
-                >WATCH MOVIE</b-button
+                >WATCH</b-button
               >
               <b-button variant="outline-light" class="mr-2"
                 >VIEW INFO</b-button
@@ -51,7 +53,9 @@
               font-scale="1.5"
               style="color: deeppink;"
             ></b-icon>
-            <b-badge variant="dark" class="ml-2">{{getBase5Vote(movie.vote_average)}}</b-badge>
+            <b-badge variant="dark" class="ml-2">{{
+              getBase5Vote(movie.vote_average)
+            }}</b-badge>
           </div>
         </div>
       </b-carousel-slide>
@@ -60,7 +64,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import { mapGetters } from "vuex";
 import storeConstants from "@/store/constants";
 import movieConstants from "@/store/modules/movie/constants";
 import constants from "@/utils/constants";
@@ -86,7 +90,7 @@ export default {
   },
   methods: {
     getBase5Vote(voteAverage) {
-      return voteAverage ? Math.round(voteAverage / 2 * 10) / 10 : "";
+      return voteAverage ? Math.round((voteAverage / 2) * 10) / 10 : "";
     },
     getStarIcon(index, voteAverage) {
       const base5Vote = this.getBase5Vote(voteAverage);

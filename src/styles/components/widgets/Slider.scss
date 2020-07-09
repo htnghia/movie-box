@@ -5,9 +5,19 @@
 }
 .main-slider{
   .jumbotron{
-    max-width: 50%;
+    .display-4{
+      max-height: 20vh;
+      font-size: 3vh;
+      font-weight: bold;
+      overflow: auto;
+    };
+    max-width: 70%;
   }
   .tags a{
     color: white;
+  }
+  .carousel-item img {
+    min-height: 62vh;
+    object-fit: cover;
   }
 }

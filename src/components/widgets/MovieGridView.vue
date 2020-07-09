@@ -20,13 +20,18 @@
         </b-card-group>
         <infinite-loading @infinite="infiniteHandler">
           <div slot="spinner" class="flex-column">
-            <img src="@/assets/loading-icon.png" class="loading-icon" />
+            <img src="@/assets/icons/loading-icon.png" class="loading-icon" />
             Loading...
           </div>
         </infinite-loading>
       </b-tab>
       <template v-slot:tabs-end>
-        <b-dropdown text="Genres" class="m-0" variant="outline-dark border-0" no-flip="true">
+        <b-dropdown
+          text="Genres"
+          class="m-0"
+          variant="outline-dark border-0"
+          no-flip="true"
+        >
           <b-dropdown-item v-for="genre in genres" v-bind:key="genre.id">{{
             genre.name
           }}</b-dropdown-item>

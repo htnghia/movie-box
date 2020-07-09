@@ -10,14 +10,17 @@
   .badge {
     margin-top: -7px;
   }
+  .card-img-top {
+    max-height: 45vh;
+    object-fit: cover;
+  }
+  .card-columns .card .img {
+    max-height: 10px;
+  }
+  .category-dropdown {
+    position: absolute;
+    top: 10px;
+    left: 333px;
+  }
 }
 
-.card-deck .card {
-  max-width: 25%;
-}
-
-.category-dropdown {
-  position: absolute;
-  top: 10px;
-  left: 333px;
-}
